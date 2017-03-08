@@ -53,5 +53,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set default url options for testing emails
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }
 end
