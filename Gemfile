@@ -36,6 +36,9 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 # Use text gem's metaphone algorithm for generating meme slugs
 gem 'text'
 
+# Use carrierwave for image hosting
+gem 'carrierwave', '~> 1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
