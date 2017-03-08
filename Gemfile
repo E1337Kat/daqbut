@@ -33,6 +33,9 @@ gem 'devise'
 gem 'omniauth-reddit', git: 'git://github.com/jackdempsey/omniauth-reddit.git'
 gem 'omniauth-oauth2', '~> 1.3.1'
 
+# Use text gem's metaphone algorithm for generating meme slugs
+gem 'text'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
