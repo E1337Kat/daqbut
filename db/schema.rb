@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170308154633) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
+    t.integer  "points",             default: 0, null: false
     t.integer  "sign_in_count",      default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
