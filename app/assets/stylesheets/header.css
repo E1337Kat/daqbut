@@ -9,14 +9,14 @@ nav {
   flex-direction: row;
 }
 
-nav a {
+nav a, span {
+  padding: 0 1em;
   text-decoration: none;
   color: #FFFFFF;
 }
 
 nav a.sign-in, nav a.sign-out {
   background-color: #FFFFFF;
-  padding: 0 1em;
   border: 2px solid #000000;
   font-size: 16pt;
   color: #000000;
@@ -32,6 +32,7 @@ nav a.sign-in:active, nav a.sign-out:active {
 }
 
 nav a.site-title {
+  padding: 0;
   font-size: 32pt;
 }
 

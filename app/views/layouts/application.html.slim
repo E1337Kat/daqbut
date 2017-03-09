@@ -8,10 +8,12 @@ html
     header
       nav
         = link_to 'DAQBUT', root_path, class: 'site-title'
-        - if user_signed_in?
-          = link_to 'Sign out', destroy_user_session_path, class: 'sign-out'
-        - else
-          = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in'
+        .account
+          - if user_signed_in?
+            span = pluralize(current_user.points, 'Point')
+            = link_to 'Sign out', destroy_user_session_path, class: 'sign-out'
+          - else
+            = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in'
       - flash.each do |key, value|
         p.flash class=key = value
     main = yield
