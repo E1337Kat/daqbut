@@ -2,7 +2,7 @@ class Meme < ApplicationRecord
   has_many :views, dependent: :destroy
   belongs_to :user
 
-  validates :title, :slug, :image, :views, :price, presence: true
+  validates :title, :slug, :image, presence: true
   validates :slug, uniqueness: true
 
   mount_uploader :image, MemeUploader
