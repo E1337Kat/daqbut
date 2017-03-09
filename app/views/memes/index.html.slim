@@ -5,6 +5,7 @@ h1 Top Memes
 ol
   - @memes.each do |meme|
     li
+      = image_tag meme.image_thumb_url
       = link_to meme.slug, meme_path(meme.slug)
       - if user_signed_in? && @meme.user == current_user
         span = ' '

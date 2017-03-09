@@ -39,6 +39,7 @@ gem 'text'
 # Use carrierwave and aws for image hosting
 gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
+gem 'mini_magick'
 
 # Use slim templates for views
 gem 'slim'
