@@ -5,4 +5,6 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
   body
+    - flash.each do |key, value|
+      p class=key = value
     = yield
