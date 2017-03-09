@@ -3,18 +3,33 @@ main {
   margin: 1em auto;
 }
 
-main a {
+main a, main input[type=submit] {
   display: block;
+  flex: 1;
   background-color: #083D77;
+  height: 100%;
   padding: 1em;
+  border: none;
+  box-sizing: border-box;
   font-family: 'Catamaran', sans-serif;
+  font-size: 1em;
   text-align: center;
   text-decoration: none;
+  outline: none;
   color: #FFFFFF;
 }
 
 main a.new-meme {
   background-color: #DA4167;
+  width: 100%;
+}
+
+article {
+  display: flex;
+  height: 64px;
+  margin: 1em 0;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
 }
 
 img {
@@ -25,4 +40,8 @@ img {
 img.thumb {
   width: 64px;
   height: 64px;
+}
+
+small {
+  opacity: 0.5;
 }

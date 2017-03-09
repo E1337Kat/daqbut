@@ -5,9 +5,16 @@ h1 Top Memes
 - @memes.each do |meme|
   article.meme id="meme_#{meme.slug}"
     = image_tag meme.image_url(:thumb), class: 'thumb'
-    = link_to meme.slug, meme_path(meme.slug)
+
+    = link_to meme_path(meme.slug) do
+      span = meme.slug
+      small = " (#{meme.title})"
+
+    span.price = pluralize(meme.price, 'Point')
+
     - if user_signed_in? && meme.user == current_user
-      span = ' '
       = link_to 'Edit', edit_meme_path(meme.slug)
-      span = ' '
       = button_to 'Delete', meme_path(meme.slug), method: :delete
+    - else
+      = link_to 'Buy', '#'
+      = link_to 'Sell', '#'

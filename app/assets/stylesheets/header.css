@@ -9,7 +9,7 @@ nav {
   flex-direction: row;
 }
 
-nav a, span {
+nav a, nav span {
   padding: 0 1em;
   text-decoration: none;
   color: #FFFFFF;
