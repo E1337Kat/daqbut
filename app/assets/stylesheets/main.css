@@ -16,3 +16,13 @@ main a {
 main a.new-meme {
   background-color: #DA4167;
 }
+
+img {
+  width: 640px;
+  height: 640px;
+}
+
+img.thumb {
+  width: 64px;
+  height: 64px;
+}
