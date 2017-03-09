@@ -57,6 +57,36 @@ class MemesController < ApplicationController
     end
   end
 
+  def buy
+    @meme = Meme.find_by(slug: params[:meme_id])
+    if @meme.buy(current_user)
+      respond_to do |f|
+        f.html { redirect_to meme_path(@meme), notice: 'Shares bought!' }
+        f.json { render json: { success: true } }
+      end
+    else
+      respond_to do |f|
+        f.html { redirect_to meme_path(@meme), alert: 'Insufficient funds.' }
+        f.json { render json: { success: false } }
+      end
+    end
+  end
+
+  def sell
+    @meme = Meme.find_by(slug: params[:meme_id])
+    if @meme.sell(current_user)
+      respond_to do |f|
+        f.html { redirect_to meme_path(@meme), notice: 'Shares sold!' }
+        f.json { render json: { success: true } }
+      end
+    else
+      respond_to do |f|
+        f.html { redirect_to meme_path(@meme), alert: 'No shares to sell.' }
+        f.json { render json: { success: false } }
+      end
+    end
+  end
+
   private
 
   def meme_params

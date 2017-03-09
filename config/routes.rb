@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  resources :memes
+  resources :memes do
+    post 'buy'
+    post 'sell'
+  end
 
   root to: 'memes#index'
 end

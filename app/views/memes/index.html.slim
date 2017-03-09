@@ -12,9 +12,13 @@ h1 Top Memes
 
     span.price = pluralize(meme.price, 'Point')
 
-    - if user_signed_in? && meme.user == current_user
-      = link_to 'Edit', edit_meme_path(meme.slug)
-      = button_to 'Delete', meme_path(meme.slug), method: :delete
+    - if user_signed_in?
+      - if meme.user == current_user
+        = link_to 'Edit', edit_meme_path(meme.slug)
+        = button_to 'Delete', meme_path(meme.slug), method: :delete
+      - else
+        = button_to 'Buy', meme_buy_path(meme.slug), method: :post
+        = button_to 'Sell', meme_sell_path(meme.slug), method: :post
     - else
-      = link_to 'Buy', '#'
-      = link_to 'Sell', '#'
+      = link_to 'Buy', user_reddit_omniauth_authorize_path
+      = link_to 'Sell', user_reddit_omniauth_authorize_path
