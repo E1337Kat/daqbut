@@ -12,4 +12,6 @@ html
           = link_to 'Sign In', user_reddit_omniauth_authorize_path
       - flash.each do |key, value|
         p class=key = value
-    = yield
+    main = yield
+    footer
+      p.legal &copy; Rose Karr 2017.
