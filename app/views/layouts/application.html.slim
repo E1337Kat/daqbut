@@ -7,11 +7,11 @@ html
   body
     header
       nav
-        = link_to 'DAQBUT', root_path
+        = link_to 'DAQBUT', root_path, class: 'site-title'
         - if user_signed_in?
-          = link_to 'Sign out', destroy_user_session_path
+          = link_to 'Sign out', destroy_user_session_path, class: 'sign-out'
         - else
-          = link_to 'Sign In', user_reddit_omniauth_authorize_path
+          = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in'
       - flash.each do |key, value|
         p.flash class=key = value
     main = yield

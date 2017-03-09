@@ -4,5 +4,15 @@ main {
 }
 
 main a {
-  color: #011627;
+  display: block;
+  background-color: #083D77;
+  padding: 1em;
+  font-family: 'Catamaran', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+main a.new-meme {
+  background-color: #DA4167;
 }
