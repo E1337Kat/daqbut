@@ -5,6 +5,11 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
   body
-    - flash.each do |key, value|
-      p class=key = value
+    header
+      nav
+        = link_to 'DAQBUT', root_path
+        - unless user_signed_in?
+          = link_to 'Sign In', user_reddit_omniauth_authorize_path
+      - flash.each do |key, value|
+        p class=key = value
     = yield
