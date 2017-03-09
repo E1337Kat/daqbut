@@ -7,7 +7,7 @@ class MemesController < ApplicationController
 
   def show
     @meme = Meme.find_by(slug: params[:id])
-    @meme.increment!(:views)
+    View.create meme: @meme, user: current_user
   end
 
   def new

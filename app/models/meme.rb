@@ -1,4 +1,5 @@
 class Meme < ApplicationRecord
+  has_many :views, dependent: :destroy
   belongs_to :user
 
   validates :title, :slug, :image, :views, :price, presence: true
