@@ -43,6 +43,9 @@ gem 'fog-aws'
 # Use slim templates for views
 gem 'slim'
 
+# Use simple_form for easy form generation
+gem 'simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
