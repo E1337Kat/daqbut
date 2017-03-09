@@ -1,4 +1,6 @@
 class Meme < ApplicationRecord
+  belongs_to :user
+
   validates :title, :slug, :image, :views, :price, presence: true
   validates :slug, uniqueness: true
 
