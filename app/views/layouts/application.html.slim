@@ -8,10 +8,12 @@ html
     header
       nav
         = link_to 'DAQBUT', root_path
-        - unless user_signed_in?
+        - if user_signed_in?
+          = link_to 'Sign out', destroy_user_session_path
+        - else
           = link_to 'Sign In', user_reddit_omniauth_authorize_path
       - flash.each do |key, value|
-        p class=key = value
+        p.flash class=key = value
     main = yield
     footer
       p.legal &copy; Rose Karr 2017.
