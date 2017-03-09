@@ -7,6 +7,7 @@ class MemesController < ApplicationController
 
   def show
     @meme = Meme.find_by(slug: params[:id])
+    @meme.increment!(:views)
   end
 
   def new
