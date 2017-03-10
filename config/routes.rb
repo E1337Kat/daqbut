@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :memes do
     post 'buy'
     post 'sell'
+    post 'report'
   end
 
   root to: 'memes#index'

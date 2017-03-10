@@ -87,6 +87,15 @@ class MemesController < ApplicationController
     end
   end
 
+  def report
+    @meme = Meme.find_by(slug: params[:meme_id])
+    Report.create(meme: @meme, user: current_user, reason: params[:reason])
+    respond_to do |f|
+      f.html { redirect_to memes_path, notice: 'Meme successfully reported.' }
+      f.json { render json: { success: true } }
+    end
+  end
+
   private
 
   def meme_params
