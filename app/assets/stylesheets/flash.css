@@ -1,12 +1,16 @@
-#footer {
+.flash {
   background-color: #000000;
   width: 100%;
+  margin: 0;
   padding: 1em;
-  box-sizing: border-box;
   text-align: center;
   color: #FFFFFF;
 }
 
-#footer a {
-  color: #FFFFFF;
+.alert {
+  background-color: #DA4167;
+}
+
+.notice {
+  background-color: #083D77;
 }

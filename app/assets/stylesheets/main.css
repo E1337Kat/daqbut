@@ -3,7 +3,7 @@
   margin: 1em auto;
 }
 
-a.new-meme {
+.new-meme {
   display: block;
   background-color: #DA4167;
   width: 100%;
@@ -14,15 +14,45 @@ a.new-meme {
   color: #FFFFFF;
 }
 
-article {
+.meme {
   margin: 1em 0;
   border-top: 2px solid #000000;
   border-bottom: 2px solid #000000;
 }
 
+.meme a, .meme input[type=submit] {
+  background-color: #083D77;
+  display: block;
+  line-height: 64px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.meme input[type=submit] {
+  width: 100%;
+  padding: 0;
+  border: none;
+  font-size: 1em;
+}
+
+.meme-header, .actions {
+  display: flex;
+}
+
+.meme-title {
+  flex: 1;
+}
+
+.meme-price {
+  padding: 0 1em;
+}
+
+.actions a, .actions form {
+  flex: 1;
+}
+
 img {
   width: 640px;
-  height: 640px;
 }
 
 img.thumb {

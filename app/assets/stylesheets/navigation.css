@@ -1,0 +1,38 @@
+#navigation {
+  background-color: #000000;
+  width: 100%;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
+
+.site-title {
+  font-size: 32pt;
+  color: #FFFFFF;
+}
+
+.account {
+  float: right;
+  margin: 1em;
+  color: #FFFFFF;
+}
+
+.account a {
+  background-color: #FFFFFF;
+  padding: 0 1em;
+  border: 2px solid #000000;
+  font-size: 16pt;
+  color: #000000;
+}
+
+.account a:hover {
+  border-color: #FFFFFF;
+}
+
+.account a:active {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.account span {
+  margin: 0 1em;
+}
