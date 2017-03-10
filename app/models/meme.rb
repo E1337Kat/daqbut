@@ -24,7 +24,7 @@ class Meme < ApplicationRecord
 
   def buy(user)
     if user.points >= price
-      User.increment!(:points, -price)
+      user.increment!(:points, -price)
       Share.create(meme: self, user: user)
       true
     else
@@ -34,7 +34,7 @@ class Meme < ApplicationRecord
 
   def sell(user)
     if user.shares.where(meme: self).any?
-      User.increment!(:points, price)
+      user.increment!(:points, price)
       Share.where(meme: self, user: user).first.destroy
       true
     else
@@ -49,6 +49,6 @@ class Meme < ApplicationRecord
   private
 
   def set_price
-    self.price = (views_count / shares_count + 1.0).round + 1
+    self.price = (views_count * shares_count) + 1
   end
 end
