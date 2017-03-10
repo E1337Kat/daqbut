@@ -1,4 +1,6 @@
 class Meme < ApplicationRecord
+  REPORT_THRESHOLD = (ENV['REPORT_THRESHOLD'] || 3).freeze
+
   has_many :views,   dependent: :destroy
   has_many :shares,  dependent: :destroy
   has_many :reports, dependent: :destroy
@@ -6,6 +8,9 @@ class Meme < ApplicationRecord
 
   validates :title, :slug, :image, presence: true
   validates :slug, uniqueness: true
+
+  scope :visible, -> { where(hidden: false) }
+  scope :hidden,  -> { where(hidden: true) }
 
   mount_uploader :image, MemeUploader
 
@@ -33,5 +38,9 @@ class Meme < ApplicationRecord
     else
       false
     end
+  end
+
+  def update_hidden!
+    update_columns(hidden: true) if reports_count > REPORT_THRESHOLD
   end
 end

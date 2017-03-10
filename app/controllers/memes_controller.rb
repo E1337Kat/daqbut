@@ -2,11 +2,11 @@ class MemesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @memes = Meme.order(price: :desc)
+    @memes = Meme.visible.order(price: :desc)
   end
 
   def show
-    @meme = Meme.find_by(slug: params[:id])
+    @meme = Meme.visible.find_by(slug: params[:id])
     View.create meme: @meme, user: current_user
   end
 
@@ -58,7 +58,7 @@ class MemesController < ApplicationController
   end
 
   def buy
-    @meme = Meme.find_by(slug: params[:meme_id])
+    @meme = Meme.visible.find_by(slug: params[:meme_id])
     if @meme.buy(current_user)
       respond_to do |f|
         f.html { redirect_to meme_path(@meme), notice: 'Shares bought!' }
@@ -73,7 +73,7 @@ class MemesController < ApplicationController
   end
 
   def sell
-    @meme = Meme.find_by(slug: params[:meme_id])
+    @meme = Meme.visible.find_by(slug: params[:meme_id])
     if @meme.sell(current_user)
       respond_to do |f|
         f.html { redirect_to meme_path(@meme), notice: 'Shares sold!' }
@@ -88,7 +88,7 @@ class MemesController < ApplicationController
   end
 
   def report
-    @meme = Meme.find_by(slug: params[:meme_id])
+    @meme = Meme.visible.find_by(slug: params[:meme_id])
     Report.create(meme: @meme, user: current_user, reason: params[:reason])
     respond_to do |f|
       f.html { redirect_to memes_path, notice: 'Meme successfully reported.' }

@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309194006) do
+ActiveRecord::Schema.define(version: 20170310152946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "memes", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.string   "slug",                      null: false
-    t.string   "image",                     null: false
-    t.integer  "views_count",   default: 0, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",                         null: false
+    t.string   "slug",                          null: false
+    t.string   "image",                         null: false
+    t.integer  "views_count",   default: 0,     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
     t.integer  "price"
-    t.integer  "shares_count",  default: 0, null: false
-    t.integer  "reports_count", default: 0, null: false
+    t.integer  "shares_count",  default: 0,     null: false
+    t.integer  "reports_count", default: 0,     null: false
+    t.boolean  "hidden",        default: false, null: false
     t.index ["slug"], name: "index_memes_on_slug", unique: true, using: :btree
   end
 
