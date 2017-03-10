@@ -5,8 +5,8 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
   body
-    header
-      nav
+    header#header
+      nav#navigation
         = link_to 'DAQBUT', root_path, class: 'site-title'
         .account
           - if user_signed_in?
@@ -16,6 +16,6 @@ html
             = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in'
       - flash.each do |key, value|
         p.flash class=key = value
-    main = yield
-    footer
+    main#main = yield
+    footer#footer
       p.legal &copy; Rose Karr 2017.

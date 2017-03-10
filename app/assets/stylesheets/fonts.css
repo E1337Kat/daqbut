@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Catamaran:800|Open+Sans|VT323');
 
-header, footer { font-family: 'Catamaran', sans-serif; }
-main           { font-family: 'Open Sans', sans-serif; }
-.ticker        { font-family: 'VT323', monospace; }
+#navigation, #footer { font-family: 'Catamaran', sans-serif; }
+body                 { font-family: 'Open Sans', sans-serif; }
+.ticker              { font-family: 'VT323', monospace; }
