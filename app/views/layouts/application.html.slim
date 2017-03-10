@@ -18,6 +18,8 @@ html
         p.flash class=key = value
     main#main = yield
     footer#footer
+      = link_to 'FAQ', page_path('faq')
+      span.separator = ' · '
       = link_to 'Terms and Conditions', page_path('terms_and_conditions')
       span.separator = ' · '
       = link_to 'Privacy Policy', page_path('privacy_policy')
