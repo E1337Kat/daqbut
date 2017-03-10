@@ -9,6 +9,8 @@ class Meme < ApplicationRecord
   validates :title, :slug, :image, presence: true
   validates :slug, uniqueness: true
 
+  before_save :set_price
+
   scope :visible, -> { where(hidden: false) }
   scope :hidden,  -> { where(hidden: true) }
 
@@ -42,5 +44,11 @@ class Meme < ApplicationRecord
 
   def update_hidden!
     update_columns(hidden: true) if reports_count > REPORT_THRESHOLD
+  end
+
+  private
+
+  def set_price
+    self.price = (views_count / shares_count + 1.0).round + 1
   end
 end
