@@ -18,4 +18,6 @@ html
         p.flash class=key = value
     main#main = yield
     footer#footer
-      p.legal &copy; Rose Karr 2017.
+      = link_to 'Terms and Conditions', page_path('terms_and_conditions')
+      span.separator = ' · '
+      = link_to 'Privacy Policy', page_path('privacy_policy')

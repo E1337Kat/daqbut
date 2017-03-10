@@ -6,3 +6,8 @@
   text-align: center;
   color: #FFFFFF;
 }
+
+#footer a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
