@@ -50,6 +50,9 @@ gem 'simple_form'
 # Use figaro for managing api keys
 gem 'figaro'
 
+# Use high_voltage for static pages
+gem 'high_voltage', '~> 3.0.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

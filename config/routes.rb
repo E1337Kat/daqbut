@@ -9,6 +9,4 @@ Rails.application.routes.draw do
     post 'sell'
     post 'report'
   end
-
-  root to: 'memes#index'
 end
