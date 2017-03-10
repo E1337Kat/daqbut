@@ -1,7 +1,19 @@
-nav = link_to 'Back to Meme Market', memes_path
+header
+  = link_to 'Back to Meme Market', memes_path
+  h1
+    = @meme.slug
+    small = " (#{@meme.title})"
 
-h1 = @meme.title
+.meme id="meme_#{@meme.slug}"
+  header.meme-header
+    = image_tag @meme.image_url
 
-= image_tag @meme.image_url
-
-p = "Price: #{@meme.price}"
+  .actions
+    - if user_signed_in?
+      = button_to 'Buy',    meme_buy_path(@meme.slug),    method: :post
+      = button_to 'Sell',   meme_sell_path(@meme.slug),   method: :post
+      = button_to 'Report', meme_report_path(@meme.slug), method: :post
+    - else
+      = link_to 'Buy',  user_reddit_omniauth_authorize_path
+      = link_to 'Sell', user_reddit_omniauth_authorize_path
+      = button_to 'Report', meme_report_path(@meme.slug), method: :post

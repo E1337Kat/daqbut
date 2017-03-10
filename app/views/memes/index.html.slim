@@ -1,6 +1,6 @@
-nav = link_to 'Launch New Meme', new_meme_path
-
-h1 Top Memes
+header
+  = link_to 'Launch New Meme', new_meme_path
+  h1 Top Memes
 
 - @memes.each do |meme|
   article.meme id="meme_#{meme.slug}"
