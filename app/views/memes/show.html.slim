@@ -13,7 +13,19 @@ header
       = button_to 'Buy',    meme_buy_path(@meme.slug),    method: :post
       = button_to 'Sell',   meme_sell_path(@meme.slug),   method: :post
       = button_to 'Report', meme_report_path(@meme.slug), method: :post
+      - if current_user == @meme.user
+        = link_to 'Edit', edit_meme_path(@meme.slug)
+        = button_to 'Delete', meme_path(@meme.slug), method: :delete
     - else
       = link_to 'Buy',  user_reddit_omniauth_authorize_path
       = link_to 'Sell', user_reddit_omniauth_authorize_path
       = button_to 'Report', meme_report_path(@meme.slug), method: :post
+
+  dl
+    dt Market Price:
+    dd = pluralize(@meme.price, 'Point')
+    - if user_signed_in?
+      dt Shares Owned:
+      dd = current_user.shares.where(meme: @meme).count
+      dt Share Value:
+      dd = @meme.price * current_user.shares.where(meme: @meme).count

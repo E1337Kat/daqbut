@@ -16,6 +16,7 @@ html
             = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in'
       - flash.each do |key, value|
         p.flash class=key = value
+      p.ticker DANK 9389 +981% · LOLCATS 14 -98% · MEME 132 +12%
     main#main = yield
     footer#footer
       = link_to 'FAQ', page_path('faq')

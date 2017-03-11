@@ -1,7 +1,6 @@
 #main {
   width: 100%;
   max-width: 640px;
-  min-height: 100vh;
   margin: 1em auto;
   padding: 0 1em;
   box-sizing: border-box;
@@ -70,4 +69,16 @@ img.thumb {
 
 small {
   opacity: 0.5;
+}
+
+dl {
+  display: flex;
+}
+
+dt {
+  display: block;
+}
+
+dd {
+  flex: 1;
 }
