@@ -53,6 +53,9 @@ gem 'figaro'
 # Use high_voltage for static pages
 gem 'high_voltage', '~> 3.0.0'
 
+# Use rollbar for catching exceptions on production
+gem 'rollbar'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
