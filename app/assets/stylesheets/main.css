@@ -19,12 +19,10 @@ main header a {
 
 .meme {
   margin: 1em 0;
-  border-top: 2px solid #000000;
-  border-bottom: 2px solid #000000;
 }
 
 .meme a, .meme input[type=submit] {
-  background-color: #083D77;
+  background-color: #000000;
   display: block;
   line-height: 64px;
   text-align: center;
@@ -81,4 +79,12 @@ dt {
 
 dd {
   flex: 1;
+}
+
+a.buy, input[type=submit].buy {
+  background-color: #73877B;
+}
+
+a.sell, input[type=submit].sell {
+  background-color: #DA4167;
 }

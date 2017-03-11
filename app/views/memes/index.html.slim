@@ -14,8 +14,8 @@ header
 
     .actions
       - if user_signed_in?
-        = button_to 'Buy',  meme_buy_path(meme.slug),    method: :post
-        = button_to 'Sell', meme_sell_path(meme.slug),   method: :post
+        = button_to 'Buy',  meme_buy_path(meme.slug),  method: :post, class: 'buy'
+        = button_to 'Sell', meme_sell_path(meme.slug), method: :post, class: 'sell'
       - else
-        = link_to 'Buy',  user_reddit_omniauth_authorize_path
-        = link_to 'Sell', user_reddit_omniauth_authorize_path
+        = link_to 'Buy',  user_reddit_omniauth_authorize_path, class: 'buy'
+        = link_to 'Sell', user_reddit_omniauth_authorize_path, class: 'sell'
