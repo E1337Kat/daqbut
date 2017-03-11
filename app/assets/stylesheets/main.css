@@ -98,8 +98,16 @@ a.edit {
   background-color: #CEBC26;
 }
 
-label, input[type=text], input[type=file] {
-  margin: 0.5em 0.5em 1em;
-  padding: 0.5em 0.5em;
+.input {
+  display: flex;
+  margin: 2em 1em;
   font-size: 1.2em;
+}
+
+label {
+  margin-right: 1em;
+}
+
+input[type=text], input[type=file] {
+  flex: 1;
 }
