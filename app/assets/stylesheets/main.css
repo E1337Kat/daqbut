@@ -34,6 +34,7 @@ main header a {
   padding: 0;
   border: none;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .meme-header, .actions {
@@ -82,9 +83,17 @@ dd {
 }
 
 a.buy, input[type=submit].buy {
-  background-color: #73877B;
+  background-color: #33873B;
 }
 
 a.sell, input[type=submit].sell {
-  background-color: #DA4167;
+  background-color: #DA0127;
+}
+
+input[type=submit].report {
+  background-color: #083DB7;
+}
+
+a.edit {
+  background-color: #CEBC26;
 }
