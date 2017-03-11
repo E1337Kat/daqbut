@@ -56,6 +56,9 @@ gem 'high_voltage', '~> 3.0.0'
 # Use rollbar for catching exceptions on production
 gem 'rollbar'
 
+# Use newrelic for performance monitoring
+gem 'newrelic_rpm'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
