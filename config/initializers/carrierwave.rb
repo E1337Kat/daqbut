@@ -3,7 +3,6 @@ CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false
   else
-    config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
       provider:              'AWS',
@@ -13,5 +12,6 @@ CarrierWave.configure do |config|
     config.fog_directory  = 'daqbut'
     config.fog_public     = false
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
+    config.storage :fog
   end
 end
