@@ -10,7 +10,7 @@ header
         .meme-title
           = meme.slug
           small = " (#{meme.title})"
-        .meme-price = pluralize(meme.price, 'Point')
+        .meme-price = "#{meme.price} DANK"
 
     .actions
       - if user_signed_in?

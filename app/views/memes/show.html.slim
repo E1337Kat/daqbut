@@ -23,7 +23,7 @@ header
 
   dl
     dt Market Price:
-    dd = pluralize(@meme.price, 'Point')
+    dd = "#{@meme.price} DANK"
     - if user_signed_in?
       dt Shares Owned:
       dd = current_user.shares.where(meme: @meme).count
