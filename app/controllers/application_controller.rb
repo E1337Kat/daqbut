@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :store_current_location, :unless => :devise_controller?
+  before_action :store_current_location, unless: :devise_controller?
+  before_action :store_referrer_id
 
   protected
 
@@ -10,6 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def store_referrer_id
+    session[:referrer_id] = params[:referrer].to_i if params[:referrer].present?
+  end
 
   def store_current_location
     store_location_for(:user, request.url)

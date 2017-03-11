@@ -1,6 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def reddit
     @user = User.from_omniauth(request.env['omniauth.auth'])
+    referrer = User.where(id: session[:referrer_id]).first if session[:referrer_id]
+    @user.referrer ||= referrer if referrer.present?
 
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
