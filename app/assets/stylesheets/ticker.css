@@ -8,6 +8,7 @@
   font-size: 1.5em;
   color: #FFFFFF;
   animation: marquee 15s linear infinite;
+  white-space: nowrap;
 }
 
 @keyframes marquee {
