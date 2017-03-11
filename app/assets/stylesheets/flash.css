@@ -1,10 +1,14 @@
 .flash {
+  position: absolute;
   background-color: #000000;
   width: 100%;
   margin: 0;
   padding: 1em;
   text-align: center;
+  opacity: 0.0;
   color: #FFFFFF;
+  animation: fade 2s linear;
+  z-index: 1;
 }
 
 .alert {
@@ -13,4 +17,9 @@
 
 .notice {
   background-color: #083D77;
+}
+
+@keyframes fade {
+  0%   { opacity: 1.0; }
+  100% { opacity: 0.0; }
 }

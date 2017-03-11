@@ -1,5 +1,7 @@
 .ticker {
   display: inline-block;
+  position: absolute;
+  top: 3em;
   margin: 0;
   padding: 0.5em 0;
   text-align: center;
