@@ -1,5 +1,5 @@
 class Meme < ApplicationRecord
-  REPORT_THRESHOLD = (ENV['REPORT_THRESHOLD'] || 3).freeze
+  REPORT_THRESHOLD = (ENV['REPORT_THRESHOLD'] || 3).to_i.freeze
 
   has_many :views,   dependent: :destroy
   has_many :shares,  dependent: :destroy
