@@ -22,11 +22,14 @@ header
       = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit'
       = button_to 'Delete', meme_path(@meme.slug), method: :delete
 
-  dl
-    dt Market Price:
-    dd = "#{@meme.price} DANK"
-    - if user_signed_in?
-      dt Shares Owned:
-      dd = current_user.shares.where(meme: @meme).count
-      dt Share Value:
-      dd = @meme.price * current_user.shares.where(meme: @meme).count
+  .meme-details
+    dl
+      dt Market Price:
+      dd = "#{@meme.price} DANK"
+      - if user_signed_in?
+        dt Shares Owned:
+        dd = current_user.shares.where(meme: @meme).count
+        dt Share Value:
+        dd = @meme.price * current_user.shares.where(meme: @meme).count
+
+    = image_tag meme_chart_path(@meme.slug, format: 'png'), class: 'meme-chart'

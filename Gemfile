@@ -59,6 +59,10 @@ gem 'rollbar'
 # Use newrelic for performance monitoring
 gem 'newrelic_rpm'
 
+# Use Gruff and Groupdate to generate charts
+gem 'groupdate'
+gem 'gruff'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
