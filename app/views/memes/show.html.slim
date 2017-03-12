@@ -1,35 +1,33 @@
 header
-  = link_to 'Back to Meme Market', memes_path
+  = link_to 'Back to Meme Market', memes_path, class: 'button'
   h1
     = @meme.slug
     small = " (#{@meme.title})"
 
 .meme id="meme_#{@meme.slug}"
-  header.meme-header
-    = image_tag @meme.image_url
+  = image_tag @meme.image_url, class: 'meme-image'
 
-  .actions
+  .meme-actions
     - if user_signed_in?
-      = button_to 'Buy',    meme_buy_path(@meme.slug),    method: :post, class: 'buy'
-      = button_to 'Sell',   meme_sell_path(@meme.slug),   method: :post, class: 'sell'
-      = link_to 'Share', share_reddit_url(meme_url(@meme.slug, referrer: current_user.id)), rel: 'nofollow noreferrer', target: '_blank'
+      = button_to 'Buy',    meme_buy_path(@meme.slug),    method: :post, class: 'buy button'
+      = button_to 'Sell',   meme_sell_path(@meme.slug),   method: :post, class: 'sell button'
+      = link_to 'Share', share_reddit_url(meme_url(@meme.slug, referrer: current_user.id)), class: 'share button', rel: 'nofollow noreferrer', target: '_blank'
     - else
-      = link_to 'Buy',  user_reddit_omniauth_authorize_path, class: 'buy'
-      = link_to 'Sell', user_reddit_omniauth_authorize_path, class: 'sell'
-      = link_to 'Share', share_reddit_url(meme_url(@meme.slug)), rel: 'nofollow noreferrer', target: '_blank'
-    = button_to 'Report', meme_report_path(@meme.slug), method: :post, class: 'report'
+      = link_to 'Buy',  user_reddit_omniauth_authorize_path, class: 'buy button'
+      = link_to 'Sell', user_reddit_omniauth_authorize_path, class: 'sell button'
+      = link_to 'Share', share_reddit_url(meme_url(@meme.slug)), class: 'share button', rel: 'nofollow noreferrer', target: '_blank'
+    = button_to 'Report', meme_report_path(@meme.slug), method: :post, class: 'report button'
     - if user_signed_in? && current_user == @meme.user
-      = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit'
-      = button_to 'Delete', meme_path(@meme.slug), method: :delete
+      = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit button'
+      = button_to 'Delete', meme_path(@meme.slug), method: :delete, class: 'button'
 
-  .meme-details
-    dl
-      dt Market Price:
-      dd = "#{@meme.price} DANK"
-      - if user_signed_in?
-        dt Shares Owned:
-        dd = current_user.shares.where(meme: @meme).count
-        dt Share Value:
-        dd = @meme.price * current_user.shares.where(meme: @meme).count
+  = image_tag meme_chart_path(@meme.slug, format: 'png'), class: 'meme-chart'
 
-    = image_tag meme_chart_path(@meme.slug, format: 'png'), class: 'meme-chart'
+  dl.meme-details
+    dt Market Price:
+    dd = "#{@meme.price} DANK"
+    - if user_signed_in?
+      dt Shares Owned:
+      dd = current_user.shares.where(meme: @meme).count
+      dt Share Value:
+      dd = @meme.price * current_user.shares.where(meme: @meme).count

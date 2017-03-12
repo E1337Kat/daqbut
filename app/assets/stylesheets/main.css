@@ -6,126 +6,19 @@
   box-sizing: border-box;
 }
 
-main header a {
-  display: block;
+#main header .button {
   float: right;
-  padding: 0.5em 1em;
-  border: 2px solid #000000;
-  box-sizing: border-box;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-}
-
-.meme {
-  margin: 1em 0;
-}
-
-.meme a, input[type=submit] {
-  background-color: #000000;
-  display: block;
-  line-height: 64px;
-  text-align: center;
-  color: #FFFFFF;
-}
-
-input[type=submit] {
-  width: 100%;
-  padding: 0;
-  border: none;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-.meme-header, .actions {
-  display: flex;
-}
-
-.meme-title {
-  flex: 1;
-}
-
-.meme-price {
-  padding: 0 1em;
-}
-
-.actions {
-  margin-bottom: 1em;
-}
-
-.actions a, .actions form {
-  flex: 1;
-}
-
-.meme-details {
-  display: flex;
-}
-
-.meme-details dl {
-  flex: 1;
-  margin-right: 1em;
 }
 
 h1 {
+  margin: 0;
   border-bottom: 2px solid #000000;
-}
-
-img {
-  width: 100%;
-}
-
-img.thumb {
-  width: 64px;
-  height: 64px;
-}
-
-img.meme-chart {
-  width: 320px;
-  height: 240px;
 }
 
 small {
   opacity: 0.5;
 }
 
-dt {
-  float: left;
-  margin-left: 1em;
-}
-
-dd {
-  margin: 0 0 1em 0;
-  padding: 0 1em 1em 0;
-  border-bottom: 2px solid #000000;
-  text-align: right;
-}
-
-a.buy, input[type=submit].buy {
-  background-color: #33873B;
-}
-
-a.sell, input[type=submit].sell {
-  background-color: #DA0127;
-}
-
-input[type=submit].report {
-  background-color: #083DB7;
-}
-
-a.edit {
-  background-color: #CEBC26;
-}
-
-.input {
-  display: flex;
-  margin: 2em 1em;
-  font-size: 1.2em;
-}
-
-label {
-  margin-right: 1em;
-}
-
-input[type=text], input[type=file] {
-  flex: 1;
+img {
+  width: 100%;
 }

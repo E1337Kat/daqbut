@@ -17,24 +17,7 @@
 
 .account {
   float: right;
-  margin: 1em;
-  color: #FFFFFF;
-}
-
-.account a {
-  background-color: #FFFFFF;
-  padding: 0 1em;
-  border: 2px solid #000000;
-  font-size: 16pt;
-  color: #000000;
-}
-
-.account a:hover {
-  border-color: #FFFFFF;
-}
-
-.account a:active {
-  background-color: #000000;
+  margin: 0.75em 0;
   color: #FFFFFF;
 }
 

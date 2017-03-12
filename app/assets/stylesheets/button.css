@@ -1,0 +1,15 @@
+.button {
+  background-color: #000000;
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+input.button {
+  height: 2.625em;
+  font-size: 1em;
+  cursor: pointer;
+}

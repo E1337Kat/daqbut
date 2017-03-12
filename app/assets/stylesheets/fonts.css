@@ -4,6 +4,4 @@
 body                { font-family: 'Open Sans', sans-serif; }
 .ticker             { font-family: 'VT323', monospace; }
 
-a {
-  text-decoration: none;
-}
+a { text-decoration: none; }
