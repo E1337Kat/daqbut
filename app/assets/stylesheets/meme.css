@@ -1,3 +1,7 @@
+.meme {
+  border-bottom: 2px solid #000000;
+}
+
 .meme-small {
   display: block;
   border-bottom: 2px solid #000000;
@@ -65,6 +69,10 @@
   padding-bottom: 1em;
   border-bottom: 2px solid #000000;
   text-align: right;
+}
+
+.meme-details dd:last-child {
+  border-bottom: none;
 }
 
 .buy {
