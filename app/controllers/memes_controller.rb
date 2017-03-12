@@ -101,10 +101,10 @@ class MemesController < ApplicationController
     data = View.where(meme: @meme).group_by_day(:created_at).count.map(&:last)
     g = Gruff::Line.new(320, false)
     g.theme = {
-      colors: %w(white black black black black),
-      marker_color: 'black',
+      colors: %w(black white white white white),
+      marker_color: 'white',
       font_color: 'gray',
-      background_colors: %w(black black)
+      background_colors: %w(white white)
     }
     g.data 'Meme Price (DANK)', data
     send_data g.to_blob, type: 'image/png', disposition: 'inline'
