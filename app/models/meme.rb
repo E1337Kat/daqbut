@@ -9,18 +9,13 @@ class Meme < ApplicationRecord
   validates :title, :slug, :image, presence: true
   validates :slug, uniqueness: true
 
+  before_save :set_slug
   before_save :set_price
 
   scope :visible, -> { where(hidden: false) }
   scope :hidden,  -> { where(hidden: true) }
 
   mount_uploader :image, MemeUploader
-
-  def title=(value)
-    self.slug = Text::Metaphone.metaphone(value).gsub(/\W/, '')
-    self.slug = slug.next while Meme.where(slug: slug).any?
-    super
-  end
 
   def buy(user)
     if user.points >= price
@@ -47,6 +42,11 @@ class Meme < ApplicationRecord
   end
 
   private
+
+  def set_slug
+    self.slug ||= Text::Metaphone.metaphone(title).gsub(/\W/, '')
+    self.slug = slug.upcase
+  end
 
   def set_price
     self.price = (views_count * shares_count) + 1
