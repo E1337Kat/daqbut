@@ -1,4 +1,4 @@
-= simple_form_for @meme do |f|
+= simple_form_for @meme, url: @meme.new_record? ? memes_path : meme_path(@meme.slug) do |f|
   = f.input :title
   = f.input :slug, label: 'Ticker Name'
   = f.input :image
