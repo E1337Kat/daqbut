@@ -1,6 +1,7 @@
 #header {
   background-color: #083D77;
   height: 7.688em;
+  overflow: hidden;
 }
 
 #navigation {
