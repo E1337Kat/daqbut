@@ -1,1 +1,1 @@
-Sitemap: http://www.daqbut.com/sitemap.xml.gz
+Sitemap: http://s3.amazonaws.com/bucketeer-6d80ff42-498d-4a23-8912-70ab34a78abd/sitemaps/sitemap.xml.gz
