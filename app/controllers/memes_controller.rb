@@ -2,7 +2,7 @@ class MemesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :chart]
 
   def index
-    @memes = Meme.visible.order(price: :desc)
+    @memes = Meme.visible.order(price: :desc).page(params[:page])
   end
 
   def show
