@@ -8,6 +8,8 @@ class Meme < ApplicationRecord
 
   validates :title, :slug, :image, presence: true
   validates :slug, uniqueness: true
+  validates :title, length: { maximum: 32 }
+  validates :slug, length: { maximum: 8 }
 
   before_save :set_slug
   before_save :set_price
