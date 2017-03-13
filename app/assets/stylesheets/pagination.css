@@ -8,11 +8,11 @@
   color: #000000;
 }
 
-.pagination a::after {
+.pagination span::after {
   content: '|';
   margin: 0 0.5em;
 }
 
-.pagination a:last-child::after {
-  content: '';
+.pagination span:last-child::after {
+  display: none;
 }
