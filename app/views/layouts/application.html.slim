@@ -23,9 +23,9 @@ html
           li = link_to "#{meme.slug} #{meme.price}", meme_path(meme.slug)
     main#main = yield
     footer#footer
-      = link_to 'Contribute', 'https://github.com/rosalinekarr/daqbut'
+      = link_to 'About', page_path('about')
       span.separator = ' · '
-      = link_to 'FAQ', page_path('faq')
+      = link_to 'Contribute', 'https://github.com/rosalinekarr/daqbut'
       span.separator = ' · '
       = link_to 'Privacy Policy', page_path('privacy_policy')
       span.separator = ' · '
