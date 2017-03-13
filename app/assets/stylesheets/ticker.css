@@ -5,10 +5,13 @@
   list-style: none;
   font-size: 1.5em;
   white-space: nowrap;
-  animation: marquee 15s linear infinite;
+  animation: marquee 60s linear infinite;
   color: #FFFFFF;
 }
 
+.ticker:hover {
+  animation-play-state: paused;
+}
 
 .ticker li {
   display: inline;
