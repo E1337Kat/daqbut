@@ -19,8 +19,8 @@ html
       - flash.each do |key, value|
         p.flash class=key = value
       ul.ticker
-        - Meme.visible.order(price: :desc).limit(25).each do |meme|
-          li = link_to "#{meme.slug} #{meme.price}", meme_path(meme.slug)
+        - $redis.keys.each do |meme|
+          li = link_to "#{meme} #{$redis.lindex(meme, -1)}", meme_path(meme)
     main#main = yield
     footer#footer
       = link_to 'Contribute', 'https://github.com/rosalinekarr/daqbut'
