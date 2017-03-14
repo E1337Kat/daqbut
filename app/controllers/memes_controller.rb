@@ -22,7 +22,7 @@ class MemesController < ApplicationController
     @meme = current_user.memes.new meme_params
     if @meme.save
       respond_to do |f|
-        f.html { redirect_to meme_path(@meme.slug), notice: 'IPO launched!' }
+        f.html { redirect_to meme_path(@meme.slug), notice: 'Meme launched!' }
         f.json { render 'show' }
       end
     else
@@ -37,7 +37,7 @@ class MemesController < ApplicationController
     @meme = current_user.memes.find_by(slug: params[:id])
     if @meme.update(meme_params)
       respond_to do |f|
-        f.html { redirect_to meme_path(@meme.slug), notice: 'IPO successfully launched!' }
+        f.html { redirect_to meme_path(@meme.slug), notice: 'Meme updated.' }
         f.json { render 'show' }
       end
     else
@@ -52,7 +52,7 @@ class MemesController < ApplicationController
     @meme = current_user.memes.find_by(slug: params[:id])
     @meme.destroy
     respond_to do |f|
-      f.html { redirect_to memes_path, notice: 'Meme successfully cashed out!' }
+      f.html { redirect_to memes_path, notice: 'Meme deleted.' }
       f.json { render json: { success: true } }
     end
   end
@@ -91,7 +91,7 @@ class MemesController < ApplicationController
     @meme = Meme.visible.find_by(slug: params[:meme_id])
     Report.create(meme: @meme, user: current_user, reason: params[:reason])
     respond_to do |f|
-      f.html { redirect_to memes_path, notice: 'Meme successfully reported.' }
+      f.html { redirect_to memes_path, notice: 'Meme reported.' }
       f.json { render json: { success: true } }
     end
   end
