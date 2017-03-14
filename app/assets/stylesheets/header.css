@@ -25,3 +25,8 @@
 .account span {
   margin: 0 1em;
 }
+
+.account .button {
+  background-color: #FFFFFF;
+  color: #000000;
+}
