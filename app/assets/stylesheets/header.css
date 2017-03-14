@@ -30,3 +30,11 @@
   background-color: #FFFFFF;
   color: #000000;
 }
+
+.positive {
+  color: #33873B;
+}
+
+.negative {
+  color: #DA0127;
+}

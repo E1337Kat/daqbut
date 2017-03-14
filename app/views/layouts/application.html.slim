@@ -20,7 +20,10 @@ html
         p.flash class=key = value
       ul.ticker
         - $redis.keys.each do |meme|
-          li = link_to "#{meme} #{$redis.lindex(meme, -1)}", meme_path(meme)
+          li = link_to meme_path(meme) do
+            = "#{meme} #{$redis.lindex(meme, -1)} "
+            - difference = $redis.lindex(meme, -1).to_i - $redis.lindex(meme, -2).to_i
+            span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"
     main#main = yield
     footer#footer
       = link_to 'Contribute', 'https://github.com/rosalinekarr/daqbut'

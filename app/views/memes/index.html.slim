@@ -9,6 +9,9 @@ header
       h2.meme-title
         = meme.slug
         small = " (#{meme.title})"
-      span.meme-price = "#{meme.price} DANK"
+      - difference = $redis.lindex(meme.slug, -1).to_i - $redis.lindex(meme.slug, -2).to_i
+      span.meme-price
+        = "#{$redis.lindex(meme.slug, -1).to_i} "
+        span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"
 
 = paginate @memes
