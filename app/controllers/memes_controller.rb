@@ -97,8 +97,7 @@ class MemesController < ApplicationController
   end
 
   def chart
-    @meme = Meme.visible.find_by(slug: params[:meme_id])
-    data = $redis.lrange(@meme.slug, -100, -1).map(&:to_i)
+    data = $redis.lrange(params[:meme_id], -100, -1).map(&:to_i)
     g = Gruff::Line.new(320, false)
     g.theme = {
       colors: %w(black white white white white),

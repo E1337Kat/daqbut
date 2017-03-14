@@ -13,7 +13,7 @@ namespace :pricing do
     Meme.find_each do |meme|
       meme.save
     end
-    $redis.lpush(meme.slug, Meme.visible.average(:price))
+    $redis.lpush('DAQBUT', Meme.visible.average(:price))
   end
 
   desc "Generate fake meme prices"
@@ -22,6 +22,6 @@ namespace :pricing do
       100.times{ $redis.lpush(meme.slug, rand(10000)) }
       meme.update_columns(price: rand(10000))
     end
-    $redis.lpush(meme.slug, Meme.visible.average(:price))
+    100.times{ $redis.lpush('DAQBUT', rand(10000)) }
   end
 end
