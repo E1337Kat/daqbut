@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :memes do
-    get 'chart'
+    get 'chart', to: 'chart#show'
     post 'buy'
     post 'sell'
     post 'report'

@@ -1,5 +1,5 @@
 class MemesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :chart]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @memes = Meme.visible.order(price: :desc).page(params[:page])
@@ -94,19 +94,6 @@ class MemesController < ApplicationController
       f.html { redirect_to memes_path, notice: 'Meme successfully reported.' }
       f.json { render json: { success: true } }
     end
-  end
-
-  def chart
-    data = $redis.lrange(params[:meme_id], -100, -1).map(&:to_i)
-    g = Gruff::Line.new(320, false)
-    g.theme = {
-      colors: %w(black white white white white),
-      marker_color: 'white',
-      font_color: 'gray',
-      background_colors: %w(white white)
-    }
-    g.data 'Meme Price (DANK)', data
-    send_data g.to_blob, type: 'image/png', disposition: 'inline'
   end
 
   private
