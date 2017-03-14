@@ -98,7 +98,7 @@ class MemesController < ApplicationController
 
   def chart
     @meme = Meme.visible.find_by(slug: params[:meme_id])
-    data = View.where(meme: @meme).group_by_day(:created_at).count.map(&:last)
+    data = $redis.lrange(@meme.slug, -100, -1).map(&:to_i)
     g = Gruff::Line.new(320, false)
     g.theme = {
       colors: %w(black white white white white),

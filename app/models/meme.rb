@@ -52,5 +52,6 @@ class Meme < ApplicationRecord
 
   def set_price
     self.price = (views_count * shares_count) + 1
+    $redis.lpush(slug, price)
   end
 end
