@@ -19,10 +19,10 @@ html
       - flash.each do |key, value|
         p.flash class=key = value
       ul.ticker
-        - $redis.keys.each do |meme|
-          li = link_to meme_path(meme) do
-            = "#{meme} #{$redis.lindex(meme, -1)} "
-            - difference = $redis.lindex(meme, -1).to_i - $redis.lindex(meme, -2).to_i
+        - $redis.keys.each do |meme_slug|
+          li = link_to meme_path(meme_slug) do
+            = "#{meme_slug} #{$redis.lindex(meme_slug, -1)} "
+            - difference = $redis.lindex(meme_slug, -1).to_i - $redis.lindex(meme_slug, -2).to_i
             span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"
     main#main = yield
     footer#footer
