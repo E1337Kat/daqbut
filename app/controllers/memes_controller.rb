@@ -1,5 +1,6 @@
 class MemesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :store_current_location
 
   def index
     @memes = Meme.visible.order(price: :desc).page(params[:page])
