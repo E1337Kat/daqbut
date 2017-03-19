@@ -72,6 +72,9 @@ gem 'sitemap_generator'
 # Use redis for stock price management
 gem 'redis', '~>3.2'
 
+# Use keen for analytics
+gem 'keen'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
