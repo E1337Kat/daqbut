@@ -13,13 +13,21 @@ class Meme < ApplicationRecord
   validates :slug, exclusion: { in: %w(DAQBUT),
                                 message: "%{value} is a reserved ticker name." }
 
-  before_save :set_slug
-  before_save :set_price
+  before_save   :set_slug
+  before_create :set_price
 
   scope :visible, -> { where(hidden: false) }
   scope :hidden,  -> { where(hidden: true) }
 
   mount_uploader :image, MemeUploader
+
+  def price
+    $redis.lindex(slug, -1).to_i
+  end
+
+  def price_difference
+    $redis.lindex(slug, -1).to_i - $redis.lindex(slug, -2).to_i
+  end
 
   def buy(user)
     if user.points >= price
@@ -53,7 +61,6 @@ class Meme < ApplicationRecord
   end
 
   def set_price
-    self.price = (views_count * shares_count) + 1
-    $redis.lpush(slug, price)
+    $redis.rpush(slug, rand(10000))
   end
 end

@@ -25,10 +25,9 @@ header
 
   dl.meme-details
     dt Market Price:
-    dd = "#{$redis.lindex(@meme.slug, -1).to_i} DANK"
+    dd = "#{@meme.price} DANK"
     dt Price Change:
-    - difference = $redis.lindex(@meme.slug, -1).to_i - $redis.lindex(@meme.slug, -2).to_i
-    dd = "#{sprintf('%+d', difference)} DANK"
+    dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
     - if user_signed_in?
       dt Shares Owned:
       dd = current_user.shares.where(meme: @meme).count
