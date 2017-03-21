@@ -32,6 +32,7 @@
 
 .meme-actions .button {
   float: left;
+  margin-right: 0.5em;
 }
 
 .meme-image {
