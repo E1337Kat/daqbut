@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321173104) do
+ActiveRecord::Schema.define(version: 20170321175507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170321173104) do
     t.integer  "shares_count",  default: 0,     null: false
     t.integer  "reports_count", default: 0,     null: false
     t.boolean  "hidden",        default: false, null: false
+    t.integer  "parent_id"
     t.index ["slug"], name: "index_memes_on_slug", unique: true, using: :btree
   end
 
