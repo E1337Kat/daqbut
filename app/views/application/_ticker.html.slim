@@ -1,0 +1,6 @@
+ul.ticker
+  - $redis.keys.each do |meme_slug|
+    li = link_to meme_path(meme_slug) do
+      = "#{meme_slug} #{$redis.lindex(meme_slug, -1)} "
+      - difference = $redis.lindex(meme_slug, -1).to_i - $redis.lindex(meme_slug, -2).to_i
+      span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"

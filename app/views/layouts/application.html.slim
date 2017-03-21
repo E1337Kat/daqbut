@@ -16,14 +16,8 @@ html
             = link_to 'Sign out', destroy_user_session_path, class: 'sign-out button'
           - else
             = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in button'
-      - flash.each do |key, value|
-        p.flash class=key = value
-      ul.ticker
-        - $redis.keys.each do |meme_slug|
-          li = link_to meme_path(meme_slug) do
-            = "#{meme_slug} #{$redis.lindex(meme_slug, -1)} "
-            - difference = $redis.lindex(meme_slug, -1).to_i - $redis.lindex(meme_slug, -2).to_i
-            span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"
+      = render 'flash'
+      = render 'ticker'
     main#main = yield
     footer#footer
       = link_to 'Contribute', 'https://github.com/rosalinekarr/daqbut'
