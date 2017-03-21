@@ -38,6 +38,7 @@ gem 'sitemap_generator'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'keen'
+gem 'em-http-request', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
