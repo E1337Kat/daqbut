@@ -33,6 +33,7 @@ gem 'simple_form'
 gem 'gruff'
 gem 'kaminari'
 gem 'sitemap_generator'
+gem 'kramdown'
 
 # Analytics
 gem 'rollbar'

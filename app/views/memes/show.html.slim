@@ -32,9 +32,9 @@ header
       dt Share Value:
       dd = @meme.price * current_user.shares.where(meme: @meme).count
 
-  p = @meme.description
+  .meme-description = render_markdown @meme.description
 
   h2 Derivatives
-    .derivatives
-      = @meme.children.each do |child|
-        = render child
+  .derivatives
+    - @meme.children.each do |child|
+      = render child
