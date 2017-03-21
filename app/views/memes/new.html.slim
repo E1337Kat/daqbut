@@ -1,5 +1,9 @@
 header
   = link_to 'Back to Meme Market', memes_path, class: 'button'
-  h1 Launch a New Meme
+  h1 New Meme
 
-= render 'form'
+= simple_form_for @meme, url: memes_path do |f|
+  = f.input :title
+  = f.input :slug, label: 'Ticker Name'
+  = f.input :image
+  = f.button :submit, class: 'button'

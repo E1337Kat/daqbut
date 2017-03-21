@@ -1,6 +1,6 @@
 header
-  = link_to 'Launch New Meme', new_meme_path, class: 'button'
-  h1 Top Memes
+  = link_to 'New Meme', new_meme_path, class: 'button'
+  h1 Memedex
 
 - @memes.each do |meme|
   = link_to meme_path(meme.slug) do

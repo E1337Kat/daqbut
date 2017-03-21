@@ -21,7 +21,7 @@ class MemesController < ApplicationController
   end
 
   def create
-    @meme = current_user.memes.new meme_params
+    @meme = current_user.memes.new params.require(:meme).permit(:title, :image, :slug)
     if @meme.save
       respond_to do |f|
         f.html { redirect_to meme_path(@meme.slug), notice: 'Meme launched!' }
@@ -37,7 +37,7 @@ class MemesController < ApplicationController
 
   def update
     @meme = current_user.memes.find_by(slug: params[:id])
-    if @meme.update(meme_params)
+    if @meme.update(params.require(:meme).permit(:title, :slug))
       respond_to do |f|
         f.html { redirect_to meme_path(@meme.slug), notice: 'Meme updated.' }
         f.json { render 'show' }
@@ -99,10 +99,6 @@ class MemesController < ApplicationController
   end
 
   private
-
-  def meme_params
-    params.require(:meme).permit(:title, :image, :slug)
-  end
 
   def track_pageview
     return if request.local?
