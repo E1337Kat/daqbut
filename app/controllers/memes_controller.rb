@@ -107,8 +107,28 @@ class MemesController < ApplicationController
   def track_pageview
     return if request.local?
     Keen.publish_async 'pageviews', {
-      url:        request.original_url,
-      ip:         request.remote_ip
+      url: request.original_url,
+      ip_address: request.remote_ip,
+      keen: {
+        timestamp: Time.now.iso8601,
+        addons: [
+          {
+            name: 'keen:ip_to_geo',
+            input: { ip: 'ip_address' },
+            output: 'geo_info'
+          },
+          {
+            name: 'keen:url_parser',
+            input: { url: 'url' },
+            output: 'parsed_url'
+          },
+          {
+            name: 'keen:date_time_parser',
+            input: { date_time: 'keen.timestamp' },
+            output: 'timestamp_info'
+          }
+        ]
+      }
     }
   end
 end
