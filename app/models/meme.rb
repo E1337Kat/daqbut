@@ -24,11 +24,11 @@ class Meme < ApplicationRecord
   mount_uploader :image, MemeUploader
 
   def price
-    $redis.lindex(slug, -1).to_i
+    @price ||= $redis.lindex(slug, -1).to_i
   end
 
   def price_difference
-    $redis.lindex(slug, -1).to_i - $redis.lindex(slug, -2).to_i
+    @price_difference ||= $redis.lindex(slug, -1).to_i - $redis.lindex(slug, -2).to_i
   end
 
   def buy(user)

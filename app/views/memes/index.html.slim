@@ -3,15 +3,6 @@ header
   h1 Memedex
 
 - @memes.each do |meme|
-  = link_to meme_path(meme.slug) do
-    article.meme-small id="meme_#{meme.slug}"
-      = image_tag meme.image_url(:thumb), class: 'meme-thumbnail'
-      h2.meme-title
-        = meme.slug
-        small = " (#{meme.title})"
-      - difference = $redis.lindex(meme.slug, -1).to_i - $redis.lindex(meme.slug, -2).to_i
-      span.meme-price
-        = "#{$redis.lindex(meme.slug, -1).to_i} "
-        span class=(difference < 0 ? 'negative' : 'positive') = "(#{sprintf('%+d', difference)})"
+  = render meme
 
 = paginate @memes

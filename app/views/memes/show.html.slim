@@ -33,3 +33,8 @@ header
       dd = @meme.price * current_user.shares.where(meme: @meme).count
 
   p = @meme.description
+
+  h2 Derivatives
+    .derivatives
+      = @meme.children.each do |child|
+        = render child
