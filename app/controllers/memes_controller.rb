@@ -109,6 +109,10 @@ class MemesController < ApplicationController
     Keen.publish_async 'pageviews', {
       url: request.original_url,
       ip_address: request.remote_ip,
+      user_agent: request.user_agent,
+      referrer: {
+        url: request.referrer
+      },
       keen: {
         timestamp: Time.now.iso8601,
         addons: [
@@ -125,7 +129,20 @@ class MemesController < ApplicationController
           {
             name: 'keen:date_time_parser',
             input: { date_time: 'keen.timestamp' },
-            output: 'timestamp_info'
+            output: 'timestamp_inf'
+          },
+          {
+            name: 'keen:ua_parser',
+            input: { ua_string: 'user_agent' },
+            output: 'parsed_user_agent'
+          },
+          {
+            name: 'keen:referrer_parser',
+            input: {
+              referrer_url: 'referrer.url',
+              page_url: 'url'
+            },
+            output: 'referrer.info'
           }
         ]
       }
