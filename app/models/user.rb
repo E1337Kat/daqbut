@@ -17,7 +17,7 @@ class User < ApplicationRecord
   after_create :reward_referral
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create
+    where(provider: auth.provider, name: auth.info.name).first_or_create
   end
 
   private

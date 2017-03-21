@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319025800) do
+ActiveRecord::Schema.define(version: 20170321173104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20170319025800) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "provider"
-    t.string   "uid"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "views_count",        default: 0, null: false
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170319025800) do
     t.integer  "reports_count",      default: 0, null: false
     t.integer  "referrer_id"
     t.integer  "referrees_count",    default: 0, null: false
+    t.string   "name"
   end
 
   create_table "views", force: :cascade do |t|
