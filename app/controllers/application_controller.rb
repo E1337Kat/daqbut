@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :track_pageview
   before_action :store_referrer_id
 
   protected
@@ -21,5 +22,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     request.referrer || root_path
+  end
+
+  def track_pageview
+    Keen.publish_async 'pageviews', { url: request.original_url }
   end
 end
