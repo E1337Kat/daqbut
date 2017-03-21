@@ -105,9 +105,10 @@ class MemesController < ApplicationController
   end
 
   def track_pageview
+    return if request.local?
     Keen.publish_async 'pageviews', {
-      url: request.original_url,
-      ip:  request.remote_ip
+      url:        request.original_url,
+      ip:         request.remote_ip
     }
   end
 end
