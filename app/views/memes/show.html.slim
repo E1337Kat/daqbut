@@ -21,8 +21,6 @@ header
       = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit button'
       = button_to 'Delete', meme_path(@meme.slug), method: :delete, class: 'button'
 
-  = image_tag meme_chart_path(@meme.slug, format: 'png'), class: 'meme-chart'
-
   dl.meme-details
     dt Market Price:
     dd = "#{@meme.price} DANK"
@@ -33,3 +31,5 @@ header
       dd = current_user.shares.where(meme: @meme).count
       dt Share Value:
       dd = @meme.price * current_user.shares.where(meme: @meme).count
+
+  p = @meme.description

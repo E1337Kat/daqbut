@@ -21,7 +21,7 @@ class MemesController < ApplicationController
   end
 
   def create
-    @meme = current_user.memes.new params.require(:meme).permit(:title, :image, :slug)
+    @meme = current_user.memes.new params.require(:meme).permit(:title, :image, :slug, :description)
     if @meme.save
       respond_to do |f|
         f.html { redirect_to meme_path(@meme.slug), notice: 'Meme launched!' }
@@ -37,7 +37,7 @@ class MemesController < ApplicationController
 
   def update
     @meme = current_user.memes.find_by(slug: params[:id])
-    if @meme.update(params.require(:meme).permit(:title, :slug))
+    if @meme.update(params.require(:meme).permit(:title, :slug, :description))
       respond_to do |f|
         f.html { redirect_to meme_path(@meme.slug), notice: 'Meme updated.' }
         f.json { render 'show' }
