@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+.user-points {
+  display: none;
+}
+
 .site-title {
   font-size: 32pt;
   color: #FFFFFF;
@@ -37,4 +41,10 @@
 
 .negative {
   color: #FF0000;
+}
+
+@media screen and (min-width: 640px) {
+  .user-points {
+    display: inline;
+  }
 }

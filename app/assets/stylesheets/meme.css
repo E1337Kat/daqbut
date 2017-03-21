@@ -52,10 +52,7 @@
 }
 
 .meme-details {
-  float: right;
-  max-width: 15em;
   width: 100%;
-  margin-left: 1em;
   box-sizing: border-box;
 }
 
@@ -87,4 +84,12 @@
 
 .sell {
   background-color: #DA0127;
+}
+
+@media screen and (min-width: 640px) {
+  .meme-details {
+    float: right;
+    max-width: 15em;
+    margin-left: 1em;
+  }
 }

@@ -12,7 +12,7 @@ html
         = link_to 'DAQBUT', root_path, class: 'site-title'
         .account
           - if user_signed_in?
-            span = "#{current_user.points} DANK"
+            span.user-points = "#{current_user.points} DANK"
             = link_to 'Sign out', destroy_user_session_path, class: 'sign-out button'
           - else
             = link_to 'Sign In', user_reddit_omniauth_authorize_path, class: 'sign-in button'
