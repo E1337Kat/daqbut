@@ -1,6 +1,7 @@
 class MemesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :store_current_location
+  before_action :track_pageview
 
   def index
     @memes = Meme.visible.order(views_count: :desc).page(params[:page])
@@ -101,5 +102,12 @@ class MemesController < ApplicationController
 
   def meme_params
     params.require(:meme).permit(:title, :image, :slug)
+  end
+
+  def track_pageview
+    Keen.publish_async 'pageviews', {
+      url: request.original_url,
+      ip:  request.remote_ip
+    }
   end
 end
