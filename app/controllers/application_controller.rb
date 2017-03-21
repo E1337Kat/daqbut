@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :store_referrer_id
+  before_action :track_pageview
 
   protected
 
@@ -21,5 +22,50 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     request.referrer || root_path
+  end
+
+  def track_pageview
+    return if request.local?
+    Keen.publish_async 'pageviews', {
+      url: request.original_url,
+      ip_address: request.remote_ip,
+      user_agent: request.user_agent,
+      referrer: {
+        url: request.referrer
+      },
+      keen: {
+        timestamp: Time.now.iso8601,
+        addons: [
+          {
+            name: 'keen:ip_to_geo',
+            input: { ip: 'ip_address' },
+            output: 'geo_info'
+          },
+          {
+            name: 'keen:url_parser',
+            input: { url: 'url' },
+            output: 'parsed_url'
+          },
+          {
+            name: 'keen:date_time_parser',
+            input: { date_time: 'keen.timestamp' },
+            output: 'timestamp_inf'
+          },
+          {
+            name: 'keen:ua_parser',
+            input: { ua_string: 'user_agent' },
+            output: 'parsed_user_agent'
+          },
+          {
+            name: 'keen:referrer_parser',
+            input: {
+              referrer_url: 'referrer.url',
+              page_url: 'url'
+            },
+            output: 'referrer.info'
+          }
+        ]
+      }
+    }
   end
 end
