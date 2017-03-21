@@ -5,89 +5,47 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Server
 gem 'rails', '~> 5.0.2'
-# Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
-# Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'redis', '~>3.2'
+gem 'figaro'
+gem 'high_voltage', '~> 3.0.0'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use devise gem for authentication
+# Authentication
 gem 'devise'
-
-# Use omniauth gems for authentication providers
 gem 'omniauth-reddit', git: 'git://github.com/jackdempsey/omniauth-reddit.git'
 gem 'omniauth-oauth2', '~> 1.3.1'
 
-# Use text gem's metaphone algorithm for generating meme slugs
-gem 'text'
-
-# Use carrierwave and aws for image hosting
+# Images
 gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 gem 'mini_magick'
 
-# Use slim templates for views
+# Templates
+gem 'jbuilder', '~> 2.5'
+gem 'text'
 gem 'slim'
-
-# Use simple_form for easy form generation
 gem 'simple_form'
-
-# Use figaro for managing api keys
-gem 'figaro'
-
-# Use high_voltage for static pages
-gem 'high_voltage', '~> 3.0.0'
-
-# Use rollbar for catching exceptions on production
-gem 'rollbar'
-
-# Use newrelic for performance monitoring
-gem 'newrelic_rpm'
-
-# Use Gruff and Groupdate to generate charts
-gem 'groupdate'
 gem 'gruff'
-
-# Use kaminari gem for pagination
 gem 'kaminari'
-
-# Use sitemap generator gem for sitemaps
 gem 'sitemap_generator'
 
-# Use redis for stock price management
-gem 'redis', '~>3.2'
-
-# Use keen for analytics
+# Analytics
+gem 'rollbar'
+gem 'newrelic_rpm'
 gem 'keen'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
