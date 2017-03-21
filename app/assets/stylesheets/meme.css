@@ -52,9 +52,14 @@
 
 .meme-details {
   float: right;
-  width: 50%;
-  padding-left: 1em;
+  max-width: 15em;
+  width: 100%;
+  margin-left: 1em;
   box-sizing: border-box;
+}
+
+.meme-market-data {
+  margin: 0;
 }
 
 .meme-details dt {

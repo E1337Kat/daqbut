@@ -21,20 +21,24 @@ header
       = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit button'
       = button_to 'Delete', meme_path(@meme.slug), method: :delete, class: 'button'
 
-  dl.meme-details
-    dt Market Price:
-    dd = "#{@meme.price} DANK"
-    dt Price Change:
-    dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
-    - if user_signed_in?
-      dt Shares Owned:
-      dd = current_user.shares.where(meme: @meme).count
-      dt Share Value:
-      dd = @meme.price * current_user.shares.where(meme: @meme).count
+  .meme-details
+    h2 Details
+    dl.meme-market-data
+      dt Market Price:
+      dd = "#{@meme.price} DANK"
+      dt Price Change:
+      dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
+      - if user_signed_in?
+        dt Shares Owned:
+        dd = current_user.shares.where(meme: @meme).count
+        dt Share Value:
+        dd = @meme.price * current_user.shares.where(meme: @meme).count
 
-  .meme-description = render_markdown @meme.description
+  h2 Description
+  .meme-description
+    = render_markdown @meme.description
 
   h2 Derivatives
-  .derivatives
+  .meme-derivatives
     - @meme.children.each do |child|
       = render child
