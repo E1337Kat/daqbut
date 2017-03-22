@@ -41,6 +41,8 @@ header
     .meme-description
       = render_markdown @meme.description
 
+  = link_to 'New Derivative', new_meme_path(parent_slug: @meme.slug),
+                              class: 'button'
   h2 Derivatives
   .meme-derivatives
     - @meme.children.each do |child|

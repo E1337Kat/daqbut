@@ -23,6 +23,10 @@ class Meme < ApplicationRecord
 
   mount_uploader :image, MemeUploader
 
+  def parent_slug=(slug)
+    self.parent = Meme.find_by(slug: slug)
+  end
+
   def price
     @price ||= $redis.lindex(slug, -1).to_i
   end
