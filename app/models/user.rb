@@ -5,7 +5,6 @@ class User < ApplicationRecord
 
   has_many :memes,   dependent: :destroy
   has_many :shares,  dependent: :destroy
-  has_many :views,   dependent: :destroy
   has_many :reports, dependent: :destroy
 
   has_many   :referrees, class_name: 'User',

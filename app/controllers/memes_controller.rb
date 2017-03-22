@@ -9,7 +9,6 @@ class MemesController < ApplicationController
   def show
     @meme = Meme.visible.find_by(slug: params[:id])
     @derivatives = Meme.visible.where(parent: @meme).page(params[:page])
-    View.create meme: @meme, user: current_user
   end
 
   def new
