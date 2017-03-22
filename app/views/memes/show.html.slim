@@ -26,7 +26,10 @@ header
       h2 Details
       dl.meme-market-data
         dt Founder:
-        dd = @meme.user.name
+        dd = link_to @meme.user.name, "https://reddit.com/u/#{@meme.user.name}"
+        - if @meme.parent
+          dt Parent Meme:
+          dd = link_to @meme.parent.slug, meme_path(@meme.parent.slug)
         dt Market Price:
         dd = "#{@meme.price} DANK"
         dt Price Change:
