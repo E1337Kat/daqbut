@@ -34,9 +34,10 @@ header
         dt Share Value:
         dd = @meme.price * current_user.shares.where(meme: @meme).count
 
-  h2 Description
-  .meme-description
-    = render_markdown @meme.description
+  - if @meme.description.present?
+    h2 Description
+    .meme-description
+      = render_markdown @meme.description
 
   h2 Derivatives
   .meme-derivatives
