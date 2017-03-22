@@ -1,13 +1,16 @@
 header
-  = link_to 'Back to Meme Market', memes_path, class: 'button'
+  - if @parent
+    = link_to "Back to #{@parent.slug}",
+              meme_path(@parent.slug),
+              class: 'button'
+  - else
+    = link_to 'Back to Meme Market', memes_path, class: 'button'
   h1 New Meme
 
 = simple_form_for @meme, url: memes_path do |f|
   = f.input :title
   = f.input :slug, label: 'Ticker Name'
-  = f.input :parent_slug, label: 'Parent Ticker Name',
-                          hint: 'Optional',
-                          input_html: { value: params[:parent_slug] }
   = f.input :image
   = f.input :description
+  = f.input :parent_id, as: :hidden if @meme.parent
   = f.button :submit, class: 'button'

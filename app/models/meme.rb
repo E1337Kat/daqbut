@@ -6,7 +6,7 @@ class Meme < ApplicationRecord
   has_many :reports, dependent: :destroy
   has_many :children, class_name: 'Meme', foreign_key: :parent_id
   belongs_to :user
-  belongs_to :parent, class_name: 'Meme'
+  belongs_to :parent, optional: true, class_name: 'Meme'
 
   validates :title, :slug, :image, presence: true
   validates :slug,  uniqueness: true

@@ -21,29 +21,31 @@ header
       = link_to 'Edit', edit_meme_path(@meme.slug), class: 'edit button'
       = button_to 'Delete', meme_path(@meme.slug), method: :delete, class: 'button'
 
-  .meme-details
-    h2 Details
-    dl.meme-market-data
-      dt Founder:
-      dd = @meme.user.name
-      dt Market Price:
-      dd = "#{@meme.price} DANK"
-      dt Price Change:
-      dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
-      - if user_signed_in?
-        dt Shares Owned:
-        dd = current_user.shares.where(meme: @meme).count
-        dt Share Value:
-        dd = @meme.price * current_user.shares.where(meme: @meme).count
+  .meme-basics
+    .meme-details
+      h2 Details
+      dl.meme-market-data
+        dt Founder:
+        dd = @meme.user.name
+        dt Market Price:
+        dd = "#{@meme.price} DANK"
+        dt Price Change:
+        dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
+        - if user_signed_in?
+          dt Shares Owned:
+          dd = current_user.shares.where(meme: @meme).count
+          dt Share Value:
+          dd = @meme.price * current_user.shares.where(meme: @meme).count
 
-  - if @meme.description.present?
-    h2 Description
-    .meme-description
-      = render_markdown @meme.description
+    - if @meme.description.present?
+      h2 Description
+      .meme-description
+        = render_markdown @meme.description
 
-  = link_to 'New Derivative', new_meme_path(parent_slug: @meme.slug),
-                              class: 'button'
-  h2 Derivatives
   .meme-derivatives
+    header
+      = link_to 'New Derivative', new_meme_path(parent_id: @meme.slug),
+                                  class: 'button'
+      h1 Derivatives
     - @meme.children.each do |child|
       = render child

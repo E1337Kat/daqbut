@@ -12,7 +12,8 @@ class MemesController < ApplicationController
   end
 
   def new
-    @meme = current_user.memes.new
+    @parent = Meme.find_by(slug: params[:parent_id]) if params[:parent_id]
+    @meme = current_user.memes.new(parent: @parent)
   end
 
   def edit
@@ -24,7 +25,7 @@ class MemesController < ApplicationController
                                                :image,
                                                :slug,
                                                :description,
-                                               :meme_slug)
+                                               :parent_id)
     @meme = current_user.memes.new meme_params
     if @meme.save
       respond_to do |f|
@@ -32,6 +33,7 @@ class MemesController < ApplicationController
         f.json { render 'show' }
       end
     else
+      raise "#{@meme.errors.inspect}"
       respond_to do |f|
         f.html { render 'new' }
         f.json { render 'show' }
@@ -40,10 +42,9 @@ class MemesController < ApplicationController
   end
 
   def update
-  meme_params = params.require(:meme).permit(:title,
-                                             :slug,
-                                             :description,
-                                             :meme_slug)
+    meme_params = params.require(:meme).permit(:title,
+                                               :slug,
+                                               :description)
     @meme = current_user.memes.find_by(slug: params[:id])
     if @meme.update meme_params
       respond_to do |f|

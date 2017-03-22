@@ -1,7 +1,3 @@
-.meme {
-  border-bottom: 2px solid #000000;
-}
-
 .meme-small {
   display: block;
   border-bottom: 2px solid #000000;
@@ -49,6 +45,12 @@
 
 .meme-chart {
   width: 50%;
+}
+
+.meme-basics::after{
+  content: ' ';
+  display: block;
+  clear: both;
 }
 
 .meme-details {
