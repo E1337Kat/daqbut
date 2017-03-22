@@ -50,5 +50,8 @@ header
       = link_to 'New Derivative', new_meme_path(parent_id: @meme.slug),
                                   class: 'button'
       h1 Derivatives
-    - @meme.children.each do |child|
-      = render child
+    - if @meme.children.any?
+      - @meme.children.each do |child|
+        = render child
+    - else
+      p This meme has no derivatives. Click "New Derivative" above to add one.
