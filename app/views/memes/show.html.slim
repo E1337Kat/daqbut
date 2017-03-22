@@ -24,6 +24,8 @@ header
   .meme-details
     h2 Details
     dl.meme-market-data
+      dt Founder:
+      dd = @meme.user.name
       dt Market Price:
       dd = "#{@meme.price} DANK"
       dt Price Change:
