@@ -3,7 +3,7 @@ class MemesController < ApplicationController
   before_action :store_current_location
 
   def index
-    @memes = Meme.visible.order(views_count: :desc).page(params[:page])
+    @memes = Meme.visible.order('RANDOM()').page(params[:page])
   end
 
   def show
