@@ -17,7 +17,7 @@ class Meme < ApplicationRecord
                                 message: "%{value} is a reserved ticker name." }
 
   before_save   :set_slug
-  before_create :set_price
+  after_create  :add_initial_prices
 
   scope :visible, -> { where(hidden: false) }
   scope :hidden,  -> { where(hidden: true) }
@@ -71,7 +71,11 @@ class Meme < ApplicationRecord
     self.slug = slug.upcase
   end
 
-  def set_price
-    $redis.rpush(slug, rand(10000))
+  def add_initial_prices
+    price = 0
+    100.times do
+      $redis.rpush(slug, [price, 1].max)
+      price += rand(100) - 50
+    end
   end
 end
