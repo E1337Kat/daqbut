@@ -31,13 +31,15 @@ class MemesController < ApplicationController
                                                :description,
                                                :parent_id)
     @meme = current_user.memes.new meme_params
-    if @meme.save
+    if current_user.points < @meme.fee
+      redirect_to memes_path, notice: 'Insufficient funds.'
+    elsif @meme.save
+      current_user.increment!(:points, -@meme.fee)
       respond_to do |f|
         f.html { redirect_to meme_path(@meme.slug), notice: 'Meme launched!' }
         f.json { render 'show' }
       end
     else
-      raise "#{@meme.errors.inspect}"
       respond_to do |f|
         f.html { render 'new' }
         f.json { render 'show' }

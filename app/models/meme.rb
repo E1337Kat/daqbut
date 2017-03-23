@@ -1,5 +1,7 @@
 class Meme < ApplicationRecord
-  REPORT_THRESHOLD = (ENV['REPORT_THRESHOLD'] || 3).to_i.freeze
+  REPORT_THRESHOLD   = (ENV['REPORT_THRESHOLD']   || 3).to_i.freeze
+  STANDARD_MEME_FEE  = (ENV['STANDARD_MEME_FEE']  || 10).to_i.freeze
+  TOP_LEVEL_MEME_FEE = (ENV['TOP_LEVEL_MEME_FEE'] || 100).to_i.freeze
 
   has_many :shares,  dependent: :destroy
   has_many :reports, dependent: :destroy
@@ -21,6 +23,10 @@ class Meme < ApplicationRecord
   scope :hidden,  -> { where(hidden: true) }
 
   mount_uploader :image, MemeUploader
+
+  def fee
+    parent_id.nil? ? TOP_LEVEL_MEME_FEE : STANDARD_MEME_FEE
+  end
 
   def parent_slug=(slug)
     self.parent = Meme.find_by(slug: slug)
