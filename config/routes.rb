@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :memes do
     resources :reports, only: [:new, :create]
 
+    get 'chart'
     post 'buy'
     post 'sell'
   end

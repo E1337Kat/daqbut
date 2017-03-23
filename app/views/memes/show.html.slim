@@ -45,6 +45,8 @@ header
       .meme-description
         = render_markdown @meme.description
 
+    = image_tag meme_chart_path(@meme.slug, format: :svg), class: 'meme-chart'
+
   .meme-derivatives
     header
       = link_to 'New Derivative', new_meme_path(parent_id: @meme.slug),

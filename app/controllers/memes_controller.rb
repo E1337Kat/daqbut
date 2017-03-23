@@ -11,6 +11,10 @@ class MemesController < ApplicationController
     @derivatives = Meme.visible.where(parent: @meme).page(params[:page])
   end
 
+  def chart
+    @meme = Meme.visible.find_by(slug: params[:meme_id])
+  end
+
   def new
     @parent = Meme.find_by(slug: params[:parent_id]) if params[:parent_id]
     @meme = current_user.memes.new(parent: @parent)
