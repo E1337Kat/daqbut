@@ -4,6 +4,5 @@ namespace :pricing do
     Meme.find_each do |meme|
       $redis.rpush(meme.slug, rand(10000))
     end
-    $redis.rpush('DAQBUT', rand(10000))
   end
 end
