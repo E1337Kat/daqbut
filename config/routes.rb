@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   end
 
   resources :memes do
+    resources :reports, only: [:new, :create]
+
     post 'buy'
     post 'sell'
-    post 'report'
   end
 end

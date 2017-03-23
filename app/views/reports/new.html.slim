@@ -1,0 +1,18 @@
+header
+  = link_to "Back to #{@meme.slug}", meme_path(@meme.slug), class: 'button'
+  h1 Report #{@meme.slug}
+
+= simple_form_for @report, url: meme_reports_path(@meme.slug) do |f|
+  p Please provide a reason for reporting this meme. Valid reasons to report include but are not limited to:
+  ul
+    li Spam
+    li Illegal content
+    li Offensive content
+    li Doxxing
+    li Threats
+    li Porn
+    li Market manipulation
+    li Insider trading
+    li Some straight up /b/ shit
+  = f.input :reason, as: :text
+  = f.submit 'Report', class: 'button'
