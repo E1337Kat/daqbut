@@ -22,6 +22,6 @@ class User < ApplicationRecord
   private
 
   def reward_referral
-    self.referrer.increment!(:points, REFERRAL_REWARD)
+    self.referrer.increment!(:points, REFERRAL_REWARD) if referrer
   end
 end
