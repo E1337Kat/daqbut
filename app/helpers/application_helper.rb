@@ -14,7 +14,7 @@ module ApplicationHelper
     return '' if span == 0
     point_strings = raw_points.map.with_index do |price, index|
       value = (price - raw_points.min) * 100.0 / span
-      "#{index},#{value.round}"
+      "#{index},#{100-value.round}"
     end
     point_strings.join(' ')
   end
