@@ -5,8 +5,6 @@ header
 = simple_form_for @meme, url: meme_path(@meme.slug) do |f|
   = f.input :title
   = f.input :slug, label: 'Ticker Name'
-  = f.input :parent_slug, label: 'Parent Ticker Name',
-                          hint: 'Optional'
   = f.input :description
   = f.input :anonymous, label: 'Post anonymously?'
   = f.button :submit, class: 'button'
