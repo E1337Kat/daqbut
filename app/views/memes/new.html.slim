@@ -13,5 +13,6 @@ header
   = f.input :image
   = f.input :description
   = f.input :parent_id, as: :hidden if @meme.parent
+  = f.input :anonymous, label: 'Post anonymously?'
   p Launching this meme require a one-time, transaction fee of #{@meme.fee} DANK.
   = f.button :submit, class: 'button'

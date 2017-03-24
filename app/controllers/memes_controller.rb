@@ -29,7 +29,8 @@ class MemesController < ApplicationController
                                                :image,
                                                :slug,
                                                :description,
-                                               :parent_id)
+                                               :parent_id,
+                                               :anonymous)
     @meme = current_user.memes.new meme_params
     if current_user.points < @meme.fee
       redirect_to memes_path, notice: 'Insufficient funds.'
@@ -50,7 +51,8 @@ class MemesController < ApplicationController
   def update
     meme_params = params.require(:meme).permit(:title,
                                                :slug,
-                                               :description)
+                                               :description,
+                                               :anonymous)
     @meme = current_user.memes.find_by(slug: params[:id])
     if @meme.update meme_params
       respond_to do |f|
