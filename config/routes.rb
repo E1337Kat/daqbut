@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:new, :create]
 
     get 'chart'
-    post 'buy'
-    post 'sell'
+    post 'buy',  to: 'shares#buy'
+    post 'sell', to: 'shares#sell'
   end
 end
