@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   REFERRAL_REWARD = (ENV['REFERRAL_REWARD'] || 500).to_i.freeze
+  SIGN_UP_REWARD = (ENV['REFERRAL_REWARD'] || 100).to_i.freeze
 
   devise :omniauthable, :trackable, omniauth_providers: [:reddit]
 
@@ -13,6 +14,7 @@ class User < ApplicationRecord
                          counter_cache: :referrees_count,
                          optional: true
 
+  after_create :reward_sign_up
   after_create :reward_referral
 
   def self.from_omniauth(auth)
@@ -20,6 +22,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def reward_sign_up
+    increment!(:points, SIGN_UP_REWARD)
+  end
 
   def reward_referral
     self.referrer.increment!(:points, REFERRAL_REWARD) if referrer
