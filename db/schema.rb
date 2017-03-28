@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324004522) do
+ActiveRecord::Schema.define(version: 20170328183723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170324004522) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "user_id"
-    t.integer  "shares_count",  default: 0,     null: false
     t.integer  "reports_count", default: 0,     null: false
     t.boolean  "hidden",        default: false, null: false
     t.integer  "parent_id"
@@ -46,8 +45,9 @@ ActiveRecord::Schema.define(version: 20170324004522) do
     t.integer  "meme_id"
     t.integer  "user_id"
     t.datetime "sold_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 0, null: false
     t.index ["meme_id"], name: "index_shares_on_meme_id", using: :btree
     t.index ["user_id"], name: "index_shares_on_user_id", using: :btree
   end
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20170324004522) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "views_count",        default: 0, null: false
-    t.integer  "shares_count",       default: 0, null: false
     t.integer  "reports_count",      default: 0, null: false
     t.integer  "referrer_id"
     t.integer  "referrees_count",    default: 0, null: false

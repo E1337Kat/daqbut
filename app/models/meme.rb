@@ -40,24 +40,30 @@ class Meme < ApplicationRecord
     @price_difference ||= $redis.lindex(slug, -1).to_i - $redis.lindex(slug, -2).to_i
   end
 
-  def buy(user)
-    if user.points >= price
-      user.increment!(:points, -price)
-      Share.create(meme: self, user: user)
-      true
-    else
-      false
-    end
+  def buy(user, quantity=1)
+    return false if user.points < price
+    user.increment!(:points, -price)
+    share = Share.where(meme: self, user: user).first_or_initialize
+    share.quantity += quantity
+    share.save
   end
 
-  def sell(user)
-    if user.shares.where(meme: self).any?
-      user.increment!(:points, price)
-      Share.where(meme: self, user: user).first.destroy
-      true
-    else
-      false
-    end
+  def sell(user, quantity=1)
+    share = Share.where(meme: self, user: user).first
+    return false if share.nil? || share.quantity < quantity
+    user.increment!(:points, price)
+    share.quantity -= quantity
+    share.save
+  end
+
+  def share_count(user)
+    share = Share.where(meme: self, user: user).first
+    return 0 if share.nil?
+    share.quantity
+  end
+
+  def share_value(user)
+    share_count(user) * price
   end
 
   def update_hidden!

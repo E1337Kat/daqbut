@@ -35,11 +35,11 @@ header
         dd = "#{@meme.price} DANK"
         dt Price Change:
         dd = "#{sprintf('%+d', @meme.price_difference)} DANK"
-        - if user_signed_in?
+        - if user_signed_in? && @meme.share_count(current_user) > 0
           dt Shares Owned:
-          dd = current_user.shares.where(meme: @meme).count
+          dd = @meme.share_count(current_user)
           dt Share Value:
-          dd = @meme.price * current_user.shares.where(meme: @meme).count
+          dd = @meme.share_value(current_user)
 
     - if @meme.description.present?
       h2 Description
