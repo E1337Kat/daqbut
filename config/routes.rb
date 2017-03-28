@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'shares#index'
+  get 'profile',   to: 'memes#profile'
 end

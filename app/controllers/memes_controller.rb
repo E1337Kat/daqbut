@@ -6,6 +6,10 @@ class MemesController < ApplicationController
     @memes = Meme.visible.order(created_at: :desc).page(params[:page])
   end
 
+  def profile
+    @memes = current_user.memes.visible.order(created_at: :desc).page(params[:page])
+  end
+
   def show
     @meme = Meme.visible.find_by(slug: params[:id])
     @derivatives = Meme.visible.where(parent: @meme).page(params[:page])

@@ -1,0 +1,8 @@
+header
+  = link_to 'Back to Memedex', memes_path, class: 'button'
+  h1 My Memes
+
+- @memes.each do |meme|
+  = render meme
+
+= paginate @memes
