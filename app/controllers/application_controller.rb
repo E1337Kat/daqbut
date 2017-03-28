@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :store_referrer_id
   before_action :track_pageview
 
+  def not_found
+    raise ActiveRecord::RecordNotFound
+  end
+
   protected
 
   def authenticate_user!

@@ -8,6 +8,6 @@ label {
   margin-right: 1em;
 }
 
-input[type=text], input[type=file], textarea {
+input[type=text], input[type=file], input[type=number], textarea {
   flex: 1;
 }

@@ -1,0 +1,9 @@
+header
+  = link_to "Back to #{@meme.slug}", meme_path(@meme.slug), class: 'button'
+  h1 Sell Share of #{@meme.slug}
+
+= form_tag meme_sell_path(@meme.slug) do
+  .input.text
+    label for='quantity' Number of Shares to Sell
+    = number_field_tag 'quantity', 1, min: 1, max: @meme.share_count(current_user)
+  = submit_tag 'Sell!', class: 'button'

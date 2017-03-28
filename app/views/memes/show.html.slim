@@ -9,8 +9,8 @@ header
 
   .meme-actions
     - if user_signed_in?
-      = button_to 'Buy',    meme_buy_path(@meme.slug),    method: :post, class: 'buy button'
-      = button_to 'Sell',   meme_sell_path(@meme.slug),   method: :post, class: 'sell button'
+      = link_to 'Buy',  meme_buy_path(@meme.slug),  class: 'buy button'
+      = link_to 'Sell', meme_sell_path(@meme.slug), class: 'sell button'
       = link_to 'Share', share_reddit_url(meme_url(@meme.slug, referrer: current_user.id)), class: 'share button', rel: 'nofollow noreferrer', target: '_blank'
     - else
       = link_to 'Buy',  user_reddit_omniauth_authorize_path, class: 'buy button'
