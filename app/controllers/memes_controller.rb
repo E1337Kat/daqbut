@@ -1,5 +1,5 @@
 class MemesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :chart]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :store_current_location
 
   def index
@@ -9,10 +9,6 @@ class MemesController < ApplicationController
   def show
     @meme = Meme.visible.find_by(slug: params[:id])
     @derivatives = Meme.visible.where(parent: @meme).page(params[:page])
-  end
-
-  def chart
-    @meme = Meme.visible.find_by(slug: params[:meme_id])
   end
 
   def new
