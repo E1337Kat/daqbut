@@ -7,7 +7,7 @@
   text-align: center;
   opacity: 0.0;
   color: #FFFFFF;
-  animation: fade 2s linear;
+  animation: fade 3s ease-in;
   z-index: 1;
 }
 
