@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     post 'buy',   to: 'shares#buy'
     post 'sell',  to: 'shares#sell'
   end
+
+  get 'dashboard', to: 'shares#index'
 end

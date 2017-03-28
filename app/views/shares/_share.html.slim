@@ -1,0 +1,9 @@
+= link_to meme_path(share.meme.slug) do
+  article.meme-small id="meme_#{share.meme.slug}"
+    = image_tag share.meme.image_url(:thumb), class: 'meme-thumbnail'
+    h2.meme-title
+      = share.meme.slug
+      small = " (#{share.meme.title})"
+    span.meme-price
+      = "#{share.meme.share_count(current_user)} Shares "
+      span = "(#{share.meme.share_value(current_user)} DANK)"

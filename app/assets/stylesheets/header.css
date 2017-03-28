@@ -13,6 +13,8 @@
 
 .user-points {
   display: none;
+  margin: 0 1em;
+  color: #FFFFFF;
 }
 
 .site-title {
@@ -23,11 +25,6 @@
 .account {
   float: right;
   margin: 0.75em 0;
-  color: #FFFFFF;
-}
-
-.account span {
-  margin: 0 1em;
 }
 
 .account .button {

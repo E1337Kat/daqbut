@@ -1,6 +1,10 @@
 class SharesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @shares = current_user.shares.includes(:meme).where('quantity > 0').page(params[:page])
+  end
+
   def new_buy
     @meme = Meme.visible.find_by(slug: params[:meme_id])
     if @meme.price > current_user.points
