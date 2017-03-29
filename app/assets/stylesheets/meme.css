@@ -89,7 +89,19 @@
   background-color: #DA0127;
 }
 
+.meme-title small {
+  display: none;
+}
+
 @media screen and (min-width: 640px) {
+  .meme-title {
+    font-size: 1em;
+  }
+
+  .meme-title small {
+    display: inline;
+  }
+
   .meme-details {
     float: right;
     max-width: 15em;
